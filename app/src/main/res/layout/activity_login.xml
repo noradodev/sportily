@@ -67,6 +67,8 @@
         android:fontFamily="@font/poppins"
         android:padding="10dp"
         android:text="Register"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/btn_radius"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintHorizontal_bias="0.7"
