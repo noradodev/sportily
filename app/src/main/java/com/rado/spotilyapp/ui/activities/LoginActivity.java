@@ -42,19 +42,36 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
+        String adminType = "admin";
+        String userType = "user";
 
         // Perform validation checks...
 
         // Authenticate user login
-        boolean isValidUser = databaseHelper.authenticateUser(email, password);
+        boolean isValidUser = databaseHelper.authenticateUser(email, password, userType );
+        boolean isValidAdmin = databaseHelper.authenticateUser(email, password, adminType);
+//
+//
+
+
         if (isValidUser) {
             // Login successful
-            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login successful as User", Toast.LENGTH_SHORT).show();
             // Optionally, navigate to another activity
             // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
         } else {
-            // Login failed
-            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+            if (isValidAdmin) {
+                // Login successful
+                Toast.makeText(this, "Login successful as Admin", Toast.LENGTH_SHORT).show();
+                // Optionally, navigate to another activity
+                // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            } else {
+
+                // Login failed
+                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+            }
         }
+
+
     }
 }
