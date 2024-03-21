@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#011C39"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F68934"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
+
+        <ImageView
+            android:id="@+id/backCartImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="18dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cartTextView"
+            app:layout_constraintHorizontal_bias="0.695"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/cartTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/poppins"
+            android:text="Cart"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backCartImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <LinearLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/paymentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppins"
+                android:text="Payment Method"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="380dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_radius_item">
+
+                <TextView
+                    android:id="@+id/codTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center|left"
+                    android:text="Cash On delivery"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="16dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="380dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_radius_item">
+
+                <TextView
+                    android:id="@+id/onlineTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center|left"
+                    android:text="Online"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="16dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/locationEditTxt"
+                android:layout_width="371dp"
+                android:layout_gravity="center"
+                android:layout_height="48dp"
+                android:hint="Input your location "
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/orderSummaryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Order Summary"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listItem"
+                android:layout_width="380dp"
+                android:layout_height="266dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="203dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F68934">
+
+            <TextView
+                android:id="@+id/equalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="26dp"
+                android:text="="
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/totalTxt"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/totalTxt"
+                app:layout_constraintTop_toBottomOf="@+id/totalTxt" />
+
+            <TextView
+                android:id="@+id/totalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="195dp"
+                android:layout_marginBottom="62dp"
+                android:fontFamily="@font/poppins"
+                android:text="Total Price"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/equalTxt"
+                app:layout_constraintVertical_bias="0.916" />
+
+            <TextView
+                android:id="@+id/priceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="180dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="$"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalTxt" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/placeOrderTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#212B46"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="Place Order"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
