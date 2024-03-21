@@ -142,6 +142,7 @@
         android:clickable="true"
         android:focusable="true"
         android:background="@drawable/btn_radius"
+        android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="@+id/confirmPassword"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="@+id/confirmPassword"
