@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.HomeFragment">
 
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -33,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:logo="@drawable/home"
+            app:logo="@drawable/baseline_home_24"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Home"
             app:titleMarginStart="30dp"
@@ -79,7 +81,8 @@
                     android:layout_width="188dp"
                     android:layout_height="99dp"
                     android:background="#FFFDF0"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
 
                     <TextView
@@ -87,8 +90,6 @@
                         android:layout_height="wrap_content"
                         android:text="Gym Product"
                         android:textStyle="bold" />
-
-
 
 
                     <ImageView
@@ -111,7 +112,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#FFFDF0"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
 
                     <TextView
@@ -119,8 +121,6 @@
                         android:layout_height="wrap_content"
                         android:text="Gym Product"
                         android:textStyle="bold" />
-
-
 
 
                     <ImageView
@@ -136,15 +136,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="390dp"
-            android:layout_height="499dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             android:background="#FFFDF0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="0.0">
 
 
             <TextView
@@ -164,33 +164,37 @@
 
             <GridLayout
                 android:id="@+id/gridLayout2"
-                android:layout_width="370dp"
-                android:layout_height="148dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
+                android:columnCount="2"
                 app:layout_constraintBottom_toTopOf="@+id/gridLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textPopular">
 
 
-
-
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_rowWeight="1"
+                    android:id="@+id/cardWrapper"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginEnd="5dp">
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#FFFF"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
 
                         <TextView
@@ -198,8 +202,6 @@
                             android:layout_height="wrap_content"
                             android:text="Sport "
                             android:textStyle="bold" />
-
-
 
 
                         <ImageView
@@ -220,18 +222,21 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_rowWeight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginStart="5dp">
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#FFFF"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
 
                         <TextView
@@ -239,8 +244,6 @@
                             android:layout_height="wrap_content"
                             android:text="Sport"
                             android:textStyle="bold" />
-
-
 
 
                         <ImageView
@@ -263,111 +266,9 @@
             </GridLayout>
 
 
-
-
-            <GridLayout
-                android:id="@+id/gridLayout3"
-                android:layout_width="370dp"
-                android:layout_height="148dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="120dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gridLayout2">
-
-
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="5dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFF"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gym"
-                            android:textStyle="bold" />
-
-
-
-
-                        <ImageView
-                            android:layout_width="105dp"
-                            android:layout_height="84dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/dumbbell" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Dumbbell" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="5dp">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#FFFF"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gym"
-                            android:textStyle="bold" />
-
-
-
-
-                        <ImageView
-                            android:layout_width="105dp"
-                            android:layout_height="84dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/hangingbag" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Hanging Bag" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
+</ScrollView>
