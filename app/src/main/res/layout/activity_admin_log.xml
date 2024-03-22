@@ -38,6 +38,90 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 
+    <EditText
+        android:id="@+id/nameAdmin"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/form_border"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="Fullname"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#BDBDBD"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtwelcome" />
+
+    <EditText
+        android:id="@+id/adminID"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/form_border"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="Admin ID"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#BDBDBD"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameAdmin" />
+
+
+    <EditText
+        android:id="@+id/phoneNum"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/form_border"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="Phone number"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#BDBDBD"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminID" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/form_border"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:hint="Phone number"
+        android:inputType="text"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#BDBDBD"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNum" />
 
     <TextView
         android:id="@+id/txtForgetpw"
@@ -60,7 +144,7 @@
         android:text="Reset Password"
         android:textColor="#0264B1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtForgetpw" />
+        app:layout_constraintStart_toEndOf="@+id/txtForgetpw"/>
 
 
     <Button
@@ -68,8 +152,9 @@
         android:layout_width="138dp"
         android:layout_height="57dp"
         android:layout_marginStart="127dp"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="128dp"
-        android:background="@drawable/btn_radius"
+        android:background="@drawable/rounded"
         android:text="Log In"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -77,7 +162,8 @@
         android:textColorHint="#F68934"
         android:textColorLink="#F68934"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/password"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="705dp" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

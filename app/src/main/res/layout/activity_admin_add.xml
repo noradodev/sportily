@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.Admin_add">
+
+    <Button
+        android:id="@+id/btn_sport"
+        android:layout_width="185dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/btn_radius_addtocart"
+        android:backgroundTint="#F68934"
+        android:fontFamily="@font/poppins"
+        android:text="Sport"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_toolbar"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/add_toolbar"
+        android:layout_width="411dp"
+        android:layout_height="101dp"
+        android:background="#F68934"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/Add_Product"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <SearchView
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="11dp"
+            android:background="@drawable/btn_radius_addtocart"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search for product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEdit" />
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="@+id/add_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_gym"
+        android:layout_width="185dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#FFFDF0"
+        android:fontFamily="@font/poppins"
+        android:text="Gym"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sport"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_toolbar"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="391dp"
+        android:layout_height="178dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gym">
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="391dp"
+            android:layout_height="184dp"
+            android:background="#FFFDF0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="86dp"
+            android:layout_height="103dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            app:srcCompat="@drawable/dumbbell" />
+
+
+        <TextView
+            android:id="@+id/textstock"
+            android:layout_width="66dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="44dp"
+            android:text="Stock : 20"
+            app:layout_constraintStart_toEndOf="@+id/txtweight"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/textproductname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="16dp"
+            android:text="Name : Dumbbell"
+            app:layout_constraintStart_toEndOf="@+id/txtCode"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/txtCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Code : 910-049"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/txtprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="92dp"
+            android:text="Price : 20$"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/txtweight"
+            android:layout_width="89dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:text="Weight : 25kg"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="391dp"
+            android:layout_height="47dp"
+            android:background="#F68934"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="91dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#FFFDF0"
+            android:text="Add"
+            android:textColor="#050000"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+
+        <TextView
+            android:id="@+id/txtselect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp"
+            android:text="Select"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+
+
+        <TextView
+            android:id="@+id/txtminus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="11dp"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/txtselect"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+
+
+        <TextView
+            android:id="@+id/txtvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp"
+            android:text="10"
+            app:layout_constraintStart_toEndOf="@+id/txtminus"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+
+        <TextView
+            android:id="@+id/txtplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/txtvalue"
+            app:layout_constraintTop_toTopOf="@+id/view5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

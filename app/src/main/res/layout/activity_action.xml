@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FCFAED"
     android:fontFamily="@font/poppins"
-    tools:context=".ui.activities.update_del">
+    tools:context=".ui.activities.Action">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Edit Products"
+            android:text="Action"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -66,48 +66,18 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="11dp" />
 
-        <Button
-            android:id="@+id/btn_gym"
-            android:layout_width="185dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/btn_radius_addtocart"
-
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="@font/poppins"
-            android:text="Gym"
-            app:layout_constraintEnd_toStartOf="@+id/btn_sport"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_toolbar" />
-
-        <Button
-            android:id="@+id/btn_sport"
-            android:layout_width="185dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="11dp"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#F68934"
-            android:fontFamily="@font/poppins"
-            android:text="Sport"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_toolbar" />
-
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="175dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="11dp"
             android:orientation="horizontal"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_gym">
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -125,42 +95,20 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/form_border">
 
-                        <Button
-                            android:id="@+id/btndelete0"
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_radius"
-                            android:backgroundTint="#F58834"
-                            android:text="Delete"
-                            android:textColor="#FFFFFF"
-                            android:textSize="6sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
                         <TextView
-                            android:id="@+id/txtdumbbell"
+                            android:id="@+id/txtadd"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="32dp"
-                            android:text="Dumbbell"
-                            android:textSize="12sp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Add Product"
+                            android:textColor="#F68934"
+                            android:textSize="20sp"
                             app:fontFamily="@font/poppins"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.504"
                             app:layout_constraintStart_toStartOf="parent" />
 
-                        <TextView
-                            android:id="@+id/textView101"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:text="25kg"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <ImageView
@@ -169,7 +117,7 @@
                         android:layout_height="77dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        app:srcCompat="@drawable/dumbbell" />
+                        app:srcCompat="@drawable/basketball" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -193,36 +141,13 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/textView102"
+                            android:id="@+id/txtupdate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:text="30kg"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <Button
-                            android:id="@+id/btndelete1"
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_radius"
-                            android:backgroundTint="#F58834"
-                            android:text="Delete"
-                            android:textColor="#FFFFFF"
-                            android:textSize="6sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/txtpunchb"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="32dp"
-                            android:text="Punching Bag"
-                            android:textSize="12sp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Update Product"
+                            android:textColor="#F68934"
+                            android:textSize="20sp"
                             app:fontFamily="@font/poppins"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +162,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/hangingbag" />
+                            app:srcCompat="@drawable/football" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>
@@ -276,36 +201,13 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/textView103"
+                            android:id="@+id/txtDel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:text="50kg"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <Button
-                            android:id="@+id/btndelete2"
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_radius"
-                            android:backgroundTint="#F58834"
-                            android:text="Delete"
-                            android:textColor="#FFFFFF"
-                            android:textSize="6sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/punchb1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="32dp"
-                            android:text="Hanging Bag"
-                            android:textSize="12sp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Delete Product"
+                            android:textColor="#F68934"
+                            android:textSize="20sp"
                             app:fontFamily="@font/poppins"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -314,12 +216,14 @@
 
                         <ImageView
                             android:id="@+id/bell2"
-                            android:layout_width="105dp"
-                            android:layout_height="88dp"
+                            android:layout_width="102dp"
+                            android:layout_height="96dp"
+                            android:rotation="45"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/hangingbag" />
+                            app:srcCompat="@drawable/racket"
+                            tools:layout_editor_absoluteY="4dp"
+                            tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>
@@ -341,36 +245,13 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/txtstock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:text="10kg"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <Button
-                            android:id="@+id/btndelete3"
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_radius"
-                            android:backgroundTint="#F58834"
-                            android:text="Delete"
-                            android:textColor="#FFFFFF"
-                            android:textSize="6sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="32dp"
-                            android:text="Dumbbell"
-                            android:textSize="12sp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Stock Control"
+                            android:textColor="#F68934"
+                            android:textSize="20sp"
                             app:fontFamily="@font/poppins"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -382,16 +263,28 @@
 
                             android:layout_width="110dp"
                             android:layout_height="83dp"
-                            android:layout_marginTop="11dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/dumbbell" />
+                            app:srcCompat="@drawable/hangingbag" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins"
+            android:text="Choose Action"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

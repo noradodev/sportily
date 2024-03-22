@@ -8,7 +8,7 @@
         android:id="@+id/app_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/app_logo"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
 
@@ -44,7 +44,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/feature1_icon"
+                android:src="@drawable/home"
                 android:layout_marginEnd="10dp"/>
 
             <TextView
@@ -65,7 +65,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/feature2_icon"
+                android:src="@drawable/home"
                 android:layout_marginEnd="10dp"/>
 
             <TextView
@@ -86,7 +86,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/feature3_icon"
+                android:src="@drawable/home"
                 android:layout_marginEnd="10dp"/>
 
             <TextView
@@ -124,21 +124,21 @@
 
     <!-- About Us and Contact Us Section -->
     <LinearLayout
+        android:id="@+id/getStarted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/get_started_buttons"
         android:layout_marginTop="20dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/about_us_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:text="About Us"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="20dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/contact_us_text"
@@ -146,16 +146,17 @@
             android:layout_height="wrap_content"
             android:text="Contact Us"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <!-- Privacy Policy and Terms of Service Section -->
     <LinearLayout
+        android:id="@id/about_us_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/about_us_text"
+
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal">
 
