@@ -2,6 +2,7 @@ package com.rado.spotilyapp.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,19 +43,37 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
-
+        String user = "user";
+        String admin ="admin";
         // Perform validation checks...
 
         // Authenticate user login
-        boolean isValidUser = databaseHelper.authenticateUser(email, password);
+        boolean isValidUser = databaseHelper.authenticateUser(email, password, user);
+        boolean isValidAdmin = databaseHelper.authenticateUser(email, password, admin);
         if (isValidUser) {
             // Login successful
-            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login successful as Users", Toast.LENGTH_SHORT).show();
             // Optionally, navigate to another activity
             // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
+            Intent toUser = new Intent(LoginActivity.this, HomepageActivity.class);
+            startActivity(toUser);
         } else {
-            // Login failed
-            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+
+            if (isValidAdmin) {
+                // Login successful
+                Toast.makeText(this, "Login successful as Admin", Toast.LENGTH_SHORT).show();
+                // Optionally, navigate to another activity
+                // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
+                Intent toAdmin = new Intent(LoginActivity.this, Admin_add.class);
+                startActivity(toAdmin);
+            } else {
+
+                // Login failed
+                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+
+            }
         }
     }
 }

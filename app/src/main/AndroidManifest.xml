@@ -28,6 +28,9 @@
             android:name=".ui.activities.HomepageActivity"
             android:exported="false" />
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.RegisterActivity"
             android:exported="false" />
         <activity

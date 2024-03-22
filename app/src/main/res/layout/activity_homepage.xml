@@ -106,7 +106,7 @@
                 <ImageView
                     android:layout_width="105dp"
                     android:layout_height="84dp"
-                    android:src="@drawable/kettlebell" />
+                    android:src="@drawable/basketball" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Intent toSignUp = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(toSignUp);
     }
-    public void LogInBtn(View view) {
+    public void logInBtn(View view) {
         Intent toLogin = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(toLogin);
     }

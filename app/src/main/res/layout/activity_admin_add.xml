@@ -115,7 +115,6 @@
                 android:layout_width="86dp"
                 android:layout_height="103dp"
                 android:layout_marginTop="12dp"
-                android:src="@tools:sample/avatars"
                 app:layout_constraintTop_toTopOf="@+id/view"
                 app:srcCompat="@drawable/dumbbell"
                 tools:layout_editor_absoluteX="20dp" />
@@ -139,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="116dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/Name"
+                android:text="Name"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/view" />
 

@@ -16,7 +16,6 @@
             android:id="@+id/backImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/baseline_arrow_back_24"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp"
@@ -49,7 +48,6 @@
             android:id="@+id/profileImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/user"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -58,7 +56,6 @@
             android:id="@+id/editImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/edit"
             tools:layout_editor_absoluteX="237dp"
             tools:layout_editor_absoluteY="95dp" />
