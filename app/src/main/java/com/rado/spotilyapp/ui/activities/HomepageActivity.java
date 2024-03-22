@@ -4,22 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rado.spotilyapp.R;
+import com.rado.spotilyapp.databinding.ActivityMainBinding;
+import com.rado.spotilyapp.ui.fragments.HomeFragment;
 
 public class HomepageActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigationView;
+
+
+    HomeFragment homeFragment = new HomeFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
     }
 
 
