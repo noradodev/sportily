@@ -14,11 +14,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_FULL_NAME = "full_name";
     private static final String COLUMN_PHONE_NUMBER = "phone_number";
-    private static final String COLUMN_ROLE = "user_type";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_PASSWORD = "password";
-
 
     private static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_NAME +
             "(" +
@@ -26,7 +24,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COLUMN_FULL_NAME + " TEXT," +
             COLUMN_PHONE_NUMBER + " TEXT," +
             COLUMN_EMAIL + " TEXT," +
-            COLUMN_ROLE + " TEXT," + // Changed to COLUMN_ROLE
             COLUMN_GENDER + " TEXT," +
             COLUMN_PASSWORD + " TEXT" +
             ")";
@@ -38,21 +35,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
-        insertDefaultUser(db);
-    }
-
-
-    private void insertDefaultUser(SQLiteDatabase db) {
-        ContentValues values = new ContentValues();
-        // Set default values for the user
-        values.put(COLUMN_FULL_NAME, "Admin");
-        values.put(COLUMN_PHONE_NUMBER, "1234567890");
-        values.put(COLUMN_EMAIL, "rado@admin.com");
-        values.put(COLUMN_GENDER, "Male"); // Assuming "Male" as default gender for the admin
-        values.put(COLUMN_PASSWORD, "admin");
-        values.put(COLUMN_ROLE,"admin");
-        // Insert the user into the database
-        db.insert(TABLE_NAME, null, values);
     }
 
     @Override
@@ -75,15 +57,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_PHONE_NUMBER, phoneNumber);
         values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_GENDER, gender);
-        values.put(COLUMN_ROLE, "user");
         values.put(COLUMN_PASSWORD, password);
-
         long id = db.insert(TABLE_NAME, null, values);
+        db.close();
         return id;
     }
-
-
-
     // Method to check if the email already exists in the database
     private boolean checkEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -96,13 +74,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public boolean authenticateUser(String email, String password, String userType) {
+    public boolean authenticateUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + "=? AND " + COLUMN_PASSWORD + "=? AND " + COLUMN_ROLE + "=?";
-        Cursor cursor = db.rawQuery(query, new String[]{email, password, userType});
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + "=? AND " + COLUMN_PASSWORD + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, password});
         boolean isValid = cursor.getCount() > 0;
         cursor.close();
         return isValid;
     }
-
 }
