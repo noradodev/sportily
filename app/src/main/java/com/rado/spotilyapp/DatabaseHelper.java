@@ -20,6 +20,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_PASSWORD = "password";
 
+
+
+
+    // Products Table
+    private static final String TABLE_PRODUCTS = "products";
+    private static final String COLUMN_PRODUCT_ID = "id";
+    private static final String COLUMN_PRODUCT_NAME = "name";
+    private static final String COLUMN_PRODUCT_PRICE = "price";
+    private static final String COLUMN_PRODUCT_DESCRIPTION = "description";
+
+
+
     private static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_NAME +
             "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -30,6 +42,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             COLUMN_GENDER + " TEXT," +
             COLUMN_PASSWORD + " TEXT" +
             ")";
+
+
+    private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE " + TABLE_PRODUCTS +
+            "(" +
+            COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_PRODUCT_NAME + " TEXT," +
+            COLUMN_PRODUCT_PRICE + " REAL," +
+            COLUMN_PRODUCT_DESCRIPTION + " TEXT" +
+            ")";
+
+
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
         insertDefaultUser(db);
+        db.execSQL(CREATE_TABLE_PRODUCTS);
     }
 
 
@@ -61,9 +86,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
         onCreate(db);
     }
-
     // Method to add a new user to the database
     public long addUser(String fullName, String phoneNumber, String email, String gender, String password) {
         String role = "user";

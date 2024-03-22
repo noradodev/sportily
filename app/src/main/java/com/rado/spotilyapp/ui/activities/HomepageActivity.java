@@ -17,18 +17,31 @@ import com.rado.spotilyapp.ui.fragments.HomeFragment;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
 
-
-    HomeFragment homeFragment = new HomeFragment();
-
-
+    private HomeFragment homeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_homepage); // Assuming your layout file is named activity_main.xml
 
+        // Initialize fragments
+        homeFragment = new HomeFragment();
 
+        // Set the default fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
+
+        // Set up BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
+
 
 
     @Override
