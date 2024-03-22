@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/add_toolbar"
             android:layout_width="411dp"
-            android:layout_height="115dp"
+            android:layout_height="0dp"
             android:background="#F68934"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
@@ -37,24 +37,6 @@
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <SearchView
-            android:id="@+id/edit_search"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="11dp"
-            android:background="@drawable/roundstyle"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:fontFamily="@font/poppins"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search for product"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEdit" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -96,7 +78,7 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/txtadd"
+                            android:id="@+id/addProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -141,7 +123,7 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/txtupdate"
+                            android:id="@+id/updateProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -201,11 +183,11 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/txtDel"
+                            android:id="@+id/deleteProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
-                            android:text="Delete Product"
+                            android:text="Delete"
                             android:textColor="#F68934"
                             android:textSize="20sp"
                             app:fontFamily="@font/poppins"
@@ -222,8 +204,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:srcCompat="@drawable/racket"
-                            tools:layout_editor_absoluteY="4dp"
-                            tools:ignore="MissingConstraints" />
+                            tools:layout_editor_absoluteY="4dp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>
@@ -245,7 +226,7 @@
                         android:background="@drawable/form_border">
 
                         <TextView
-                            android:id="@+id/txtstock"
+                            android:id="@+id/stockControl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
