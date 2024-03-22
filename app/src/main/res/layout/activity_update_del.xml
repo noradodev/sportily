@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fontFamily="@font/poppins"
+    tools:context=".ui.activities.update_del">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/add_toolbar"
+        android:layout_width="411dp"
+        android:layout_height="101dp"
+        android:background="#F68934"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-2dp" />
+
+    <TextView
+        android:id="@+id/txtEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins"
+        android:text="Edit Products"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <SearchView
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search for product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="11dp" />
+
+    <Button
+        android:id="@+id/btn_gym"
+        android:layout_width="185dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#FFFDF0"
+        android:fontFamily="@font/poppins"
+        android:text="Gym"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sport"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_toolbar" />
+
+    <Button
+        android:id="@+id/btn_sport"
+        android:layout_width="185dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#F68934"
+        android:fontFamily="@font/poppins"
+        android:text="Sport"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_toolbar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

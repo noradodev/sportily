@@ -133,16 +133,18 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="162dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/btn_radius"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/poppins"
         android:padding="10dp"
         android:text="Register"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/btn_radius"
+        android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="@+id/confirmPassword"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="@+id/confirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
