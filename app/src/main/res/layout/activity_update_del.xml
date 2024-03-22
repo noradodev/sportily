@@ -126,7 +126,7 @@
                         android:background="@drawable/form_border">
 
                         <Button
-                            android:id="@+id/btndelete"
+                            android:id="@+id/btndelete0"
                             android:layout_width="50dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -135,12 +135,11 @@
                             android:text="Delete"
                             android:textColor="#FFFFFF"
                             android:textSize="6sp"
-                            tools:layout_editor_absoluteX="0dp"
-                            tools:layout_editor_absoluteY="0dp"
-                            tools:ignore="DuplicateIds" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/txtdumbbell"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="32dp"
@@ -205,7 +204,7 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <Button
-                            android:id="@+id/btndelete"
+                            android:id="@+id/btndelete1"
                             android:layout_width="50dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -214,11 +213,11 @@
                             android:text="Delete"
                             android:textColor="#FFFFFF"
                             android:textSize="6sp"
-                            tools:layout_editor_absoluteX="0dp"
-                            tools:layout_editor_absoluteY="0dp" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/txtpunchb"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="32dp"
@@ -288,7 +287,7 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <Button
-                            android:id="@+id/btndelete"
+                            android:id="@+id/btndelete2"
                             android:layout_width="50dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -297,11 +296,11 @@
                             android:text="Delete"
                             android:textColor="#FFFFFF"
                             android:textSize="6sp"
-                            tools:layout_editor_absoluteX="0dp"
-                            tools:layout_editor_absoluteY="0dp" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/punchb1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="32dp"
@@ -315,12 +314,12 @@
 
                         <ImageView
                             android:id="@+id/bell2"
-                            android:layout_width="102dp"
-                            android:layout_height="96dp"
+                            android:layout_width="105dp"
+                            android:layout_height="88dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:srcCompat="@drawable/hangingbag"
-                            tools:layout_editor_absoluteY="4dp" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/hangingbag" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>
@@ -353,7 +352,7 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <Button
-                            android:id="@+id/btndelete"
+                            android:id="@+id/btndelete3"
                             android:layout_width="50dp"
                             android:layout_height="30dp"
                             android:layout_weight="1"
@@ -362,8 +361,8 @@
                             android:text="Delete"
                             android:textColor="#FFFFFF"
                             android:textSize="6sp"
-                            tools:layout_editor_absoluteX="0dp"
-                            tools:layout_editor_absoluteY="0dp" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -383,7 +382,7 @@
 
                             android:layout_width="110dp"
                             android:layout_height="83dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="11dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
