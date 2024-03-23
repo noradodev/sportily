@@ -19,10 +19,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private List<Product> productList;
     private Context context;
+    private DatabaseHelper databaseHelper;
 
     public ProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
+        this.databaseHelper = new DatabaseHelper(context);
     }
 
     @NonNull
@@ -39,19 +41,38 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productNameTextView.setText(product.getProductName());
         holder.productPriceTextView.setText(product.getPrice() + " $");
 
-
-
-
         // Handle item click
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Add the product to the cart with quantity 1 (you can modify this as needed)
+                long result = databaseHelper.addToCart(product.getId(), product.getProductName(), product.getPrice(),  1);
+                if (result != -1) {
+                    // Product added to cart successfully
+                    // You can show a message or update UI as needed
+                } else {
+                    // Failed to add product to cart
+                    // You can show an error message or handle the failure
+                }
+
                 // Navigate to ProductDetailActivity passing the product ID
                 Intent intent = new Intent(context, ProductDetail.class);
                 intent.putExtra("productId", product.getId());
                 context.startActivity(intent);
             }
         });
+
+
+        // Handle item click
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Navigate to ProductDetailActivity passing the product ID
+//                Intent intent = new Intent(context, ProductDetail.class);
+//                intent.putExtra("productId", product.getId());
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override

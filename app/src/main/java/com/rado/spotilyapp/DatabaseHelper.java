@@ -41,6 +41,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CART = "cart";
     private static final String COLUMN_CART_ID = "cart_id";
     private static final String COLUMN_CART_PRODUCT_ID = "product_id";
+    private static final String COLUMN_CART_PRODUCT_NAME = "product_name";
+
+    private static final String COLUMN_CART_PRICE = "price";
+
+    private static final String COLUMN_CART_QUANTITY = "quantity";
+
 
 
 
@@ -71,7 +77,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_CART = "CREATE TABLE " + TABLE_CART +
             "(" +
             COLUMN_CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            COLUMN_CART_PRODUCT_ID + " INTEGER" +
+            COLUMN_CART_PRODUCT_ID + " INTEGER," +
+            COLUMN_CART_PRODUCT_NAME + " TEXT," +
+            COLUMN_CART_PRICE + " TEXT," +
+            COLUMN_CART_QUANTITY + " INTEGER" +
             ")";
 
 
@@ -246,6 +255,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return user;
     }
+
+    public long addToCart(int productId, String productName,String price, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CART_PRODUCT_ID, productId);
+        values.put(COLUMN_CART_PRODUCT_NAME, productName);
+        values.put(COLUMN_CART_PRICE, price);
+        values.put(COLUMN_CART_QUANTITY, quantity);
+        long id = db.insert(TABLE_CART, null, values);
+        db.close();
+        return id;
+    }
+
+
+
+    // Method to fetch all product IDs from the cart
+    public List<Product> getAllCartProducts() {
+        List<Product> cartProducts = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_CART;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int productId = cursor.getInt(cursor.getColumnIndex(COLUMN_CART_PRODUCT_ID));
+                Product product = getProductById(productId); // Assuming this method is already implemented in DatabaseHelper
+                if (product != null) {
+                    cartProducts.add(product);
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        // Do not close the database connection here
+
+        return cartProducts;
+    }
+
+
+
 
 
 
