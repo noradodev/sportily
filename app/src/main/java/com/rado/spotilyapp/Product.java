@@ -7,6 +7,7 @@ public class Product {
     private String weight;
     private String price;
     private String description;
+    private int quantity;
 
     public Product() {
     }
@@ -18,6 +19,8 @@ public class Product {
         this.weight = weight;
         this.price = price;
         this.description = description;
+        this.quantity = 1;
+
     }
 
     public int getId() {
@@ -66,5 +69,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

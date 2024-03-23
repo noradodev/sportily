@@ -31,4 +31,11 @@ public class Action extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish(); // Finish the current activity to prevent the user from going back
     }
+
+    public void editProductPage(View view) {
+        Intent t= new Intent(Action.this, EditProduct.class);
+        startActivity(t);
+
+    }
+
 }

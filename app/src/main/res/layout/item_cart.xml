@@ -115,13 +115,13 @@
             android:id="@+id/plusBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins"
             android:text="+"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/itemTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/itemTextView" />
+            app:layout_constraintStart_toEndOf="@+id/productQ"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,6 +109,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:id="@+id/cardEdit"
+                android:onClick="editProductPage"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
@@ -131,6 +133,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
                             android:text="Update Product"
+                            android:onClick="editProduct"
+
                             android:textColor="#F68934"
                             android:textSize="20sp"
                             app:fontFamily="@font/poppins"
