@@ -1,24 +1,22 @@
 package com.rado.spotilyapp.ui.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rado.spotilyapp.R;
-import com.rado.spotilyapp.databinding.ActivityMainBinding;
 import com.rado.spotilyapp.ui.fragments.HomeFragment;
+import com.rado.spotilyapp.ui.fragments.ProductFragment;
+import com.rado.spotilyapp.ui.fragments.SettingFragment;
 
 public class HomepageActivity extends AppCompatActivity {
 
 
     private HomeFragment homeFragment;
+    private ProductFragment productFregment;
+    private SettingFragment settingFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +24,8 @@ public class HomepageActivity extends AppCompatActivity {
 
         // Initialize fragments
         homeFragment = new HomeFragment();
+        productFregment = new ProductFragment();
+        settingFragment = new SettingFragment();
 
         // Set the default fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
@@ -36,9 +36,15 @@ public class HomepageActivity extends AppCompatActivity {
             if (item.getItemId() == R.id.nav_home) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
                 return true;
-            } else {
+            } else if(item.getItemId() == R.id.productAll){
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, productFregment).commit();
+            } else if(item.getItemId() == R.id.userAccount){
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, settingFragment).commit();
+            }
+            else {
                 return false;
             }
+            return false;
         });
     }
 

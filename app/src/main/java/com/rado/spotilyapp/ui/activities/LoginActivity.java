@@ -54,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     private void loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
@@ -70,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             // Login successful
             Toast.makeText(this, "Login successful as User", Toast.LENGTH_SHORT).show();
             sessionManager.setLogin(true, user); // Set login status to true and user role
+
             navigateToHomepage();
         } else if (isValidAdmin) {
             // Login successful as admin

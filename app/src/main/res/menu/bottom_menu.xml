@@ -17,6 +17,13 @@
         android:title="Products"
         android:icon="@drawable/baseline_local_mall_24"
         />
+
+    <item
+        android:id="@+id/userCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_add_shopping_cart_24"
+        android:title="Cart" />
     <item
         android:id="@+id/userAccount"
         android:layout_width="wrap_content"

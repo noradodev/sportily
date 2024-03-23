@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "UserData.db";
@@ -25,10 +28,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Products Table
     private static final String TABLE_PRODUCTS = "products";
-    private static final String COLUMN_PRODUCT_ID = "id";
-    private static final String COLUMN_PRODUCT_NAME = "name";
-    private static final String COLUMN_PRODUCT_PRICE = "price";
-    private static final String COLUMN_PRODUCT_DESCRIPTION = "description";
+    // Column names
+    private static final String COLUMN_ID_PRODUCT = "id";
+    private static final String COLUMN_PRODUCT_TYPE = "product_type";
+    private static final String COLUMN_PRODUCT_NAME = "product_name";
+    private static final String COLUMN_WEIGHT = "weight";
+    private static final String COLUMN_PRICE = "price";
+    private static final String COLUMN_DESCRIPTION = "description";
+
+
+
+    private static final String TABLE_CART = "cart";
+    private static final String COLUMN_CART_ID = "cart_id";
+    private static final String COLUMN_CART_PRODUCT_ID = "product_id";
+
 
 
 
@@ -46,11 +59,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE " + TABLE_PRODUCTS +
             "(" +
-            COLUMN_PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_ID_PRODUCT + " INTEGER PRIMARY KEY," +
+            COLUMN_PRODUCT_TYPE + " TEXT," +
             COLUMN_PRODUCT_NAME + " TEXT," +
-            COLUMN_PRODUCT_PRICE + " REAL," +
-            COLUMN_PRODUCT_DESCRIPTION + " TEXT" +
+            COLUMN_WEIGHT + " TEXT," +
+            COLUMN_PRICE + " TEXT," +
+            COLUMN_DESCRIPTION + " TEXT" +
             ")";
+
+    // Create table query for cart items
+    private static final String CREATE_TABLE_CART = "CREATE TABLE " + TABLE_CART +
+            "(" +
+            COLUMN_CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_CART_PRODUCT_ID + " INTEGER" +
+            ")";
+
+
 
 
 
@@ -67,6 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USERS);
         insertDefaultUser(db);
         db.execSQL(CREATE_TABLE_PRODUCTS);
+        db.execSQL(CREATE_TABLE_CART);
     }
 
 
@@ -109,6 +134,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return id;
     }
+
+    // Insert a new product into the database
+    public long insertProduct(String productType, String productName, String weight, String price, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCT_TYPE, productType);
+        values.put(COLUMN_PRODUCT_NAME, productName);
+        values.put(COLUMN_WEIGHT, weight);
+        values.put(COLUMN_PRICE, price);
+        values.put(COLUMN_DESCRIPTION, description);
+        long id = db.insert(TABLE_PRODUCTS, null, values);
+        db.close();
+        return id;
+    }
+
+
+
     // Method to check if the email already exists in the database
     private boolean checkEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -129,4 +171,85 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return isValid;
     }
+    // Method to fetch all products from the database
+    public List<Product> getAllProducts() {
+        List<Product> productList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_PRODUCTS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Product product = new Product();
+                product.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT)));
+                product.setProductType(cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE)));
+                product.setProductName(cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME)));
+                product.setWeight(cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT)));
+                product.setPrice(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
+                product.setDescription(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)));
+                productList.add(product);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return products list
+        return productList;
+    }
+
+
+    public Product getProductById(int productId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_ID_PRODUCT + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(productId)});
+
+        Product product = null;
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT));
+            String productType = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE));
+            String productName = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME));
+            String weight = cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT));
+            String price = cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
+            String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+
+            product = new Product(id, productType, productName, weight, price, description);
+        }
+
+        cursor.close();
+        db.close();
+
+        return product;
+    }
+
+
+    public User getUserByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        User user = null;
+        if (cursor.moveToFirst()) {
+            String fullName = cursor.getString(cursor.getColumnIndex(COLUMN_FULL_NAME));
+            String phoneNumber = cursor.getString(cursor.getColumnIndex(COLUMN_PHONE_NUMBER));
+            String gender = cursor.getString(cursor.getColumnIndex(COLUMN_GENDER));
+            // You can add more columns here as needed
+
+            user = new User(fullName, phoneNumber, email, gender); // Assuming User class constructor takes these parameters
+        }
+
+        cursor.close();
+        db.close();
+
+        return user;
+    }
+
+
+
+
+
+
 }

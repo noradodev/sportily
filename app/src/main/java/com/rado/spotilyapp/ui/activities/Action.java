@@ -20,7 +20,7 @@ public class Action extends AppCompatActivity {
     }
 
     public void addProduct(View view) {
-        Intent addPro = new Intent(Action.this, Admin_add.class);
+        Intent addPro = new Intent(Action.this, Admin_Confirm.class);
         startActivity(addPro);
     }
 
