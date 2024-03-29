@@ -295,6 +295,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
+    // Method to fetch all users from the database
+    public List<User> getAllUsers() {
+        List<User> userList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Get column indices
+        int fullNameIndex = cursor.getColumnIndex(COLUMN_FULL_NAME);
+        int phoneNumberIndex = cursor.getColumnIndex(COLUMN_PHONE_NUMBER);
+        int emailIndex = cursor.getColumnIndex(COLUMN_EMAIL);
+        int genderIndex = cursor.getColumnIndex(COLUMN_GENDER);
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Retrieve data using column indices
+                String fullName = cursor.getString(fullNameIndex);
+                String phoneNumber = cursor.getString(phoneNumberIndex);
+                String email = cursor.getString(emailIndex);
+                String gender = cursor.getString(genderIndex);
+
+                // Create a new User object and add it to the list
+                User user = new User(fullName, phoneNumber, email, gender);
+                userList.add(user);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return userList;
+    }
+
+
+
+
 
 
 

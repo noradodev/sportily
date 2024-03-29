@@ -88,13 +88,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gym Product"
+                        android:fontFamily="@font/poppins"
+                        android:text="Sport Product"
+                        android:textColor="#212B46"
                         android:textStyle="bold" />
 
 
                     <ImageView
                         android:layout_width="100dp"
-                        android:layout_height="87dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/ball" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -119,14 +121,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
                         android:text="Gym Product"
+                        android:textColor="#212B46"
                         android:textStyle="bold" />
 
-
                     <ImageView
-                        android:layout_width="105dp"
-                        android:layout_height="84dp"
-                        android:src="@drawable/basketball" />
+                        android:layout_width="100dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/kettle_crop" />
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -136,7 +142,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="390dp"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:layout_marginTop="30dp"
             android:background="#FFFDF0"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -154,7 +160,9 @@
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="290dp"
+                android:fontFamily="@font/poppins"
                 android:text="Popular"
+                android:textColor="#212B46"
                 android:textSize="24dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,14 +179,13 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:columnCount="2"
-                app:layout_constraintBottom_toTopOf="@+id/gridLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textPopular">
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardWrapper"
+                    android:id="@+id/cardWrapper3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -200,7 +207,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Sport "
+                            android:textColor="#212B46"
                             android:textStyle="bold" />
 
 
@@ -216,7 +225,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Tennis Racket" />
+                            android:fontFamily="@font/poppins"
+                            android:text="Tennis Racket"
+                            android:textColor="#212B46" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -242,7 +253,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="Sport"
+                            android:textColor="#212B46"
                             android:textStyle="bold" />
 
 
@@ -258,7 +271,119 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Football" />
+                            android:fontFamily="@font/poppins"
+                            android:text="Football"
+                            android:textColor="#212B46" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </GridLayout>
+
+            <GridLayout
+                android:id="@+id/gridLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="80dp"
+                android:columnCount="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gridLayout2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardWrapper2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="20dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFF"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Gym"
+                            android:textColor="#212B46"
+                            android:textStyle="bold" />
+
+
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="84dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            app:srcCompat="@drawable/dumbbell" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins"
+                            android:text="Dumbbell"
+                            android:textColor="#212B46" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFF"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Gym"
+                            android:textColor="#212B46"
+                            android:textStyle="bold" />
+
+
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="84dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            app:srcCompat="@drawable/hangingbag" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins"
+                            android:text="Hangingbag"
+                            android:textColor="#212B46" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
