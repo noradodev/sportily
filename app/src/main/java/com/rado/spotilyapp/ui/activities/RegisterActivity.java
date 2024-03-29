@@ -2,10 +2,12 @@ package com.rado.spotilyapp.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rado.spotilyapp.DatabaseHelper;
@@ -14,12 +16,16 @@ import com.rado.spotilyapp.R;
 public class RegisterActivity extends AppCompatActivity {
     private EditText fullNameEditText, phoneNumEditText, emailAddressEditText, genderEditText, passwordEditText, confirmPasswordEditText;
     private Button registerButton;
+    private TextView loginText;
     private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //mo
+        loginText = findViewById(R.id.textLogin);
 
 
         databaseHelper = new DatabaseHelper(this);
@@ -43,6 +49,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //create function for register
+
+        // momo
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to login activity
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

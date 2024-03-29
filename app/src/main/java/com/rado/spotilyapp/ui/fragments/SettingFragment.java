@@ -16,11 +16,14 @@ import com.rado.spotilyapp.R;
 import com.rado.spotilyapp.SessionManager;
 import com.rado.spotilyapp.User;
 import com.rado.spotilyapp.ui.activities.LoginActivity;
+import com.rado.spotilyapp.ui.activities.View_history;
+
 public class SettingFragment extends Fragment {
 
     private SessionManager sessionManager;
     private DatabaseHelper databaseHelper;
     private TextView nameTxt, phoneTxt, emailTxt, genderTxt;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +55,22 @@ public class SettingFragment extends Fragment {
             // Handle the case where user is null
             // For example, you could show a message or prompt the user to log in again
         }
+
+        Button viewHistoryButton = view.findViewById(R.id.bViewHistory);
+//        viewHistoryButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(SettingFragment.this, View_history.class);
+//                startActivity(intent);
+//            }
+//        });
+        viewHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), View_history.class);
+                startActivity(intent);
+            }
+        });
 
 
         Button logoutButton = view.findViewById(R.id.bLogout);
