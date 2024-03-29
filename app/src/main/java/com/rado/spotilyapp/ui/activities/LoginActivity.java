@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rado.spotilyapp.DatabaseHelper;
@@ -21,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private SessionManager sessionManager;
 
+    private TextView signupTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailAddress);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.button);
+        signupTextView = findViewById(R.id.textSignup);
 
         // Setting click listener for login button
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +44,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Perform login logic here
                 loginUser();
+            }
+        });
+
+
+        //momo
+        signupTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  Navigate to Register Activity
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
