@@ -31,10 +31,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/product_name_text_view"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/basketball"
-        tools:layout_editor_absoluteX="16dp" />
+        app:srcCompat="@drawable/basketball" />
 
     <TextView
         android:id="@+id/product_name_text_view"
