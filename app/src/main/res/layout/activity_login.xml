@@ -94,18 +94,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Already has account?"
+            android:text="Don't have an account?"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/textView5"
             tools:layout_editor_absoluteY="658dp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/poppins"
-            android:text="Login Here"
+            android:text="Sign Up"
             android:textColor="#0073FF"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="233dp"
