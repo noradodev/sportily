@@ -1,34 +1,59 @@
 package com.rado.spotilyapp.ui.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rado.spotilyapp.R;
-import com.rado.spotilyapp.databinding.ActivityMainBinding;
+import com.rado.spotilyapp.ui.fragments.CartFragment;
 import com.rado.spotilyapp.ui.fragments.HomeFragment;
+import com.rado.spotilyapp.ui.fragments.ProductFragment;
+import com.rado.spotilyapp.ui.fragments.SettingFragment;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
 
-
-    HomeFragment homeFragment = new HomeFragment();
-
-
+    private HomeFragment homeFragment;
+    private ProductFragment productFregment;
+    private CartFragment cartFregment;
+    private SettingFragment settingFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_homepage); // Assuming your layout file is named activity_main.xml
 
+        // Initialize fragments
+        homeFragment = new HomeFragment();
+        productFregment = new ProductFragment();
+        cartFregment = new CartFragment();
 
+        settingFragment = new SettingFragment();
+
+        // Set the default fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
+
+        // Set up BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, homeFragment).commit();
+                return true;
+            } else if(item.getItemId() == R.id.productAll){
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, productFregment).commit();
+            } else if(item.getItemId() == R.id.userAccount){
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, settingFragment).commit();
+            } else if(item.getItemId() == R.id.userCart){
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_home, cartFregment).commit();
+            }
+            else {
+                return false;
+            }
+            return false;
+        });
     }
+
 
 
     @Override

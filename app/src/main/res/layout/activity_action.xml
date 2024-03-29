@@ -33,7 +33,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Action"
+            android:text="Admin Page"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:onClick="logOut"
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints"
@@ -70,7 +71,9 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:onClick="addProduct"
+                    >
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -106,6 +109,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:id="@+id/cardEdit"
+                android:onClick="editProductPage"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
@@ -128,6 +133,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
                             android:text="Update Product"
+                            android:onClick="editProduct"
+
                             android:textColor="#F68934"
                             android:textSize="20sp"
                             app:fontFamily="@font/poppins"
@@ -200,11 +207,12 @@
                             android:id="@+id/bell2"
                             android:layout_width="102dp"
                             android:layout_height="96dp"
+                            android:layout_marginTop="3dp"
                             android:rotation="45"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:srcCompat="@drawable/racket"
-                            tools:layout_editor_absoluteY="4dp" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/racket" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </RelativeLayout>

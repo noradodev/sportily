@@ -32,6 +32,7 @@
             android:layout_marginTop="18dp"
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="18dp"
+            android:onClick="backPressedBtn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cartTextView"
             app:layout_constraintHorizontal_bias="0.695"
