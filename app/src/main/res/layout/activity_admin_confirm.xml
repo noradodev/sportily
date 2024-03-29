@@ -6,38 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.Admin_Confirm">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#F68934"
-            tools:ignore="MissingConstraints">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F68934"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
 
-            <ImageView
-                android:id="@+id/backImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_arrow_back_24"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="18dp" />
+        <ImageView
+            android:id="@+id/backImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="backTo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/checkoutTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            tools:ignore="MissingConstraints" />
 
 
-            <TextView
-                android:id="@+id/checkoutTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
-                android:text="Comfirm"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="54dp"
-                tools:layout_editor_absoluteY="21dp" />
+        <TextView
+            android:id="@+id/checkoutTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="272dp"
+            android:fontFamily="@font/poppins"
+            android:text="Add Product"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/backImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backImageView"
+            app:layout_constraintVertical_bias="0.0" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -129,7 +138,7 @@
 
 
                 <EditText
-                    android:id="@+id/emailEditTxt"
+                    android:id="@+id/weightEditTxt"
                     android:layout_width="371dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -150,6 +159,7 @@
 
 
                 <EditText
+                    android:id="@+id/priceEditText"
                     android:layout_width="371dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -168,6 +178,7 @@
 
 
                 <EditText
+                    android:id="@+id/descItem"
                     android:layout_width="368dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -206,6 +217,7 @@
             android:text="Comfirm"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:onClick="addProductHandler"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"

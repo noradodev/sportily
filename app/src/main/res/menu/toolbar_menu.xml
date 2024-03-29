@@ -17,7 +17,7 @@
 
     <item
         android:title="cart"
-        android:id="@+id/cart"
+        android:id="@+id/viewCartButton"
         android:icon= "@drawable/cart"
         app:showAsAction="ifRoom"/>
 

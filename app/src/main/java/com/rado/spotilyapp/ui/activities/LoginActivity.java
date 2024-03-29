@@ -10,13 +10,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.rado.spotilyapp.DatabaseHelper;
+import com.rado.spotilyapp.SessionManager;
 import com.rado.spotilyapp.R;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
     private Button loginButton;
     private DatabaseHelper databaseHelper;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         databaseHelper = new DatabaseHelper(this);
+        sessionManager = new SessionManager(this);
 
         // Linking XML elements with Java
         emailEditText = findViewById(R.id.emailAddress);
@@ -38,42 +42,60 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser();
             }
         });
+
+        // Check if user is already logged in
+        if (sessionManager.isLoggedIn()) {
+            // User is already logged in, navigate to appropriate page
+            if (sessionManager.getUserRole().equals("user")) {
+                navigateToHomepage();
+            } else if (sessionManager.getUserRole().equals("admin")) {
+                navigateToAdminPage();
+            }
+        }
     }
+
+
+
 
     private void loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
         String user = "user";
-        String admin ="admin";
+        String admin = "admin";
+
         // Perform validation checks...
 
         // Authenticate user login
         boolean isValidUser = databaseHelper.authenticateUser(email, password, user);
         boolean isValidAdmin = databaseHelper.authenticateUser(email, password, admin);
+
         if (isValidUser) {
             // Login successful
-            Toast.makeText(this, "Login successful as Users", Toast.LENGTH_SHORT).show();
-            // Optionally, navigate to another activity
-            // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            Toast.makeText(this, "Login successful as User", Toast.LENGTH_SHORT).show();
+            sessionManager.setLogin(true, user); // Set login status to true and user role
 
-            Intent toUser = new Intent(LoginActivity.this, HomepageActivity.class);
-            startActivity(toUser);
+            navigateToHomepage();
+        } else if (isValidAdmin) {
+            // Login successful as admin
+            Toast.makeText(this, "Login successful as Admin", Toast.LENGTH_SHORT).show();
+            sessionManager.setLogin(true, admin); // Set login status to true and user role
+            navigateToAdminPage();
         } else {
-
-            if (isValidAdmin) {
-                // Login successful
-                Toast.makeText(this, "Login successful as Admin", Toast.LENGTH_SHORT).show();
-                // Optionally, navigate to another activity
-                // For example: startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-
-                Intent toAdmin = new Intent(LoginActivity.this, Admin_add.class);
-                startActivity(toAdmin);
-            } else {
-
-                // Login failed
-                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-
-            }
+            // Login failed
+            Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    private void navigateToHomepage() {
+        Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+        startActivity(intent);
+        finish(); // Finish LoginActivity so user cannot go back to it after logging in
+    }
+
+    private void navigateToAdminPage() {
+        Intent intent = new Intent(LoginActivity.this,  Action.class);
+        startActivity(intent);
+        finish(); // Finish LoginActivity so user cannot go back to it after logging in
     }
 }

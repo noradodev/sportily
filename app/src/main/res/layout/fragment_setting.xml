@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SettingFragment">
+    tools:context=".ui.fragments.SettingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,28 +17,19 @@
             android:background="#F68934"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:id="@+id/backImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_arrow_back_24"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="18dp" />
-
             <TextView
                 android:id="@+id/checkoutTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppins"
                 android:text="Setting"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="34sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/backImageView"
-                app:layout_constraintStart_toEndOf="@+id/backImageView"
-                app:layout_constraintTop_toTopOf="@+id/backImageView" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -168,12 +159,13 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:layout_width="371dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/gender_txt"
-                    android:textColor="#000000" />
+                android:id="@+id/genderEditTxt"
+                android:layout_width="371dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/gender_txt"
+                android:textColor="#000000" />
 
             </LinearLayout>
 
@@ -215,6 +207,7 @@
                 android:background="@drawable/btn_radius_addtocart"
                 android:fontFamily="@font/poppins"
                 android:text="Logout"
+                android:onClick="logOutHandler"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -23,12 +23,13 @@
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bottomNavigation"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/bottom_navigation_background"
+            android:hapticFeedbackEnabled="false"
             app:labelVisibilityMode="labeled"
-            android:background="@android:color/transparent"
             app:menu="@menu/bottom_menu" />
 
 
