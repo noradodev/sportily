@@ -38,4 +38,14 @@ public class Action extends AppCompatActivity {
 
     }
 
+    public void deleteProductPage() {
+        deleteProductPage(null);
+    }
+
+    public void deleteProductPage(View view) {
+        Intent intent = new Intent(Action.this, EditProduct.class);
+        startActivity(intent);
+
+    }
+
 }

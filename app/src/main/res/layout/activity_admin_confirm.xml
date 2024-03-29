@@ -64,7 +64,7 @@
                 android:layout_width="399dp"
                 android:layout_height="109dp"
                 app:srcCompat="@drawable/basketball"
-                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteX="-24dp"
                 tools:layout_editor_absoluteY="2dp" />
 
 

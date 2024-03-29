@@ -33,7 +33,7 @@ tools:context=".ui.activities.up_del">
             android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Edit Products"
+            android:text="Delete Product"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,10 +61,13 @@ tools:context=".ui.activities.up_del">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="5dp"
+            android:clickable="false"
+            android:onClick="backTo"
             android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintEnd_toStartOf="@+id/txtEdit"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="11dp" />
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btn_gym"

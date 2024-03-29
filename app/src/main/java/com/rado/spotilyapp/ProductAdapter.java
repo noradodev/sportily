@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rado.spotilyapp.ui.activities.ProductDetail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -21,10 +22,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private Context context;
     private DatabaseHelper databaseHelper;
 
+//    Lina
+private List<Product> filteredList; // New filtered list to store filtered items
+
     public ProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
         this.databaseHelper = new DatabaseHelper(context);
+//        lina
+        this.filteredList = new ArrayList<>(productList); // Initialize filtered list with all items
     }
 
     @NonNull
@@ -94,4 +100,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             // Initialize other views
         }
     }
+
+//    lina
+// Method to filter the list based on the search query
+public void filterList(List<Product> filteredList) {
+    this.filteredList = filteredList;
+    notifyDataSetChanged(); // Notify RecyclerView that dataset has changed
+}
+
 }
