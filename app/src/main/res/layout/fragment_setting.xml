@@ -181,7 +181,7 @@
 
             <Button
                 android:id="@+id/bPassword"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"
                 android:layout_marginTop="42dp"
@@ -189,7 +189,7 @@
                 android:background="@drawable/my_btn_background"
                 android:fontFamily="@font/poppins"
                 android:text="Change Password"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +198,7 @@
 
             <Button
                 android:id="@+id/bLogout"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"
                 android:layout_marginTop="9dp"
@@ -208,7 +208,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="Logout"
                 android:onClick="logOutHandler"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
