@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotilyApp"
         tools:targetApi="31">
+
+        <activity
+            android:name=".ui.activities.UpdateUserActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.UserInfoActivity"
             android:exported="false" />
@@ -66,6 +71,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+
     </application>
 
 </manifest>

@@ -1,13 +1,18 @@
 package com.rado.spotilyapp;
 
+import android.graphics.Bitmap;
+
 public class Product {
     private int id;
+    private Bitmap productImage;
     private String productType;
     private String productName;
     private String weight;
     private String price;
     private String description;
     private int quantity;
+
+    private String productImagePath;
 
     public Product() {
     }
@@ -78,4 +83,15 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+
+    public String getProductImagePath() {
+        return productImagePath;
+    }
+
+    public void setProductImagePath(String productImagePath) {
+        this.productImagePath = productImagePath;
+    }
+
+
 }

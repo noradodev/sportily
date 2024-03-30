@@ -5,7 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Base64;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +38,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_PRODUCTS = "products";
     // Column names
     private static final String COLUMN_ID_PRODUCT = "id";
+    private static final String COLUMN_PRODUCT_IMG = "product_img";
     private static final String COLUMN_PRODUCT_TYPE = "product_type";
     private static final String COLUMN_PRODUCT_NAME = "product_name";
     private static final String COLUMN_WEIGHT = "weight";
     private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_DESCRIPTION = "description";
+    private static final String COLUMN_PRODUCT_IMG_PATH = "product_img_path";
 
 
 
@@ -66,11 +76,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE " + TABLE_PRODUCTS +
             "(" +
             COLUMN_ID_PRODUCT + " INTEGER PRIMARY KEY," +
+            COLUMN_PRODUCT_IMG + " BLOB," +
             COLUMN_PRODUCT_TYPE + " TEXT," +
             COLUMN_PRODUCT_NAME + " TEXT," +
             COLUMN_WEIGHT + " TEXT," +
             COLUMN_PRICE + " TEXT," +
-            COLUMN_DESCRIPTION + " TEXT" +
+            COLUMN_DESCRIPTION + " TEXT," +
+            COLUMN_PRODUCT_IMG_PATH + " TEXT " +
             ")";
 
     // Create table query for cart items
@@ -145,7 +157,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Insert a new product into the database
-    public long insertProduct(String productType, String productName, String weight, String price, String description) {
+
+
+    // Existing insert method
+    public long insertProduct(String productType, String productName, String weight, String price, String description, String imagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PRODUCT_TYPE, productType);
@@ -153,10 +168,82 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_WEIGHT, weight);
         values.put(COLUMN_PRICE, price);
         values.put(COLUMN_DESCRIPTION, description);
+        values.put(COLUMN_PRODUCT_IMG_PATH, imagePath); // Store the image path
         long id = db.insert(TABLE_PRODUCTS, null, values);
         db.close();
         return id;
     }
+
+
+    // Updated retrieve method to include image path
+    public Product getProductById(int productId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_ID_PRODUCT + "=?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(productId)});
+
+        Product product = null;
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT));
+            String productType = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE));
+            String productName = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME));
+            String weight = cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT));
+            String price = cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
+            String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+            String imagePath = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_IMG_PATH)); // Retrieve the image path
+            product = new Product(id, productType, productName, weight, price, description);
+            product.setProductImagePath(imagePath); // Set the image path
+        }
+
+        cursor.close();
+        db.close();
+
+        return product;
+    }
+
+    // Your existing DatabaseHelper code continues...
+
+    // Method to convert file to byte array
+    private byte[] fileToByteArray(String filePath) {
+        byte[] bytes = null;
+        try {
+            File file = new File(filePath);
+            FileInputStream fis = new FileInputStream(file);
+            bytes = new byte[(int) file.length()];
+            fis.read(bytes);
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bytes;
+    }
+
+
+
+//    public Product getProductById(int productId) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_ID_PRODUCT + "=?";
+//        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(productId)});
+//
+//        Product product = null;
+//        if (cursor.moveToFirst()) {
+//            int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT));
+//            String productType = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE));
+//            String productName = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME));
+//            String weight = cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT));
+//            String price = cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
+//            String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+//            String imagePath = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_IMG)); // Assuming you have a column for image file paths
+//
+//            product = new Product(id, productType, productName, weight, price, description);
+//            product.setProductImagePath(imagePath); // Set the product image file path
+//        }
+//
+//        cursor.close();
+//        db.close();
+//
+//        return product;
+//    }
+
 
 
 
@@ -211,28 +298,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Product getProductById(int productId) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_ID_PRODUCT + "=?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(productId)});
-
-        Product product = null;
-        if (cursor.moveToFirst()) {
-            int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT));
-            String productType = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE));
-            String productName = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME));
-            String weight = cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT));
-            String price = cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
-            String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
-
-            product = new Product(id, productType, productName, weight, price, description);
-        }
-
-        cursor.close();
-        db.close();
-
-        return product;
-    }
+//    public Product getProductById(int productId) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + COLUMN_ID_PRODUCT + "=?";
+//        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(productId)});
+//
+//        Product product = null;
+//        if (cursor.moveToFirst()) {
+//            int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_PRODUCT));
+//            String productType = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_TYPE));
+//            String productName = cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_NAME));
+//            String weight = cursor.getString(cursor.getColumnIndex(COLUMN_WEIGHT));
+//            String price = cursor.getString(cursor.getColumnIndex(COLUMN_PRICE));
+//            String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+//
+//            product = new Product(id, productType, productName, weight, price, description);
+//        }
+//
+//        cursor.close();
+//        db.close();
+//
+//        return product;
+//    }
 
 
     public User getUserByEmail(String email) {
@@ -330,9 +417,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean deleteUserByEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deletedRows = db.delete(TABLE_NAME, COLUMN_EMAIL + "=?", new String[]{email});
+        db.close();
+        return deletedRows > 0;
+    }
 
 
 
+    // Method to update user details in the database
+    public boolean updateUser(String email, String fullName, String phoneNumber, String gender) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FULL_NAME, fullName);
+        values.put(COLUMN_PHONE_NUMBER, phoneNumber);
+        values.put(COLUMN_GENDER, gender);
+
+        int updatedRows = db.update(TABLE_NAME, values, COLUMN_EMAIL + "=?", new String[]{email});
+        db.close();
+        return updatedRows > 0;
+    }
+
+
+
+    public List<User> searchUsers(String query) {
+        List<User> userList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Define the query to search for users with a name or email matching the query
+        String searchQuery = "SELECT * FROM " + TABLE_NAME +
+                " WHERE " + COLUMN_FULL_NAME + " LIKE '%" + query + "%'" +
+                " OR " + COLUMN_EMAIL + " LIKE '%" + query + "%'";
+
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        // Loop through the cursor to extract user data and add to the list
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String fullName = cursor.getString(cursor.getColumnIndex(COLUMN_FULL_NAME));
+                String phoneNumber = cursor.getString(cursor.getColumnIndex(COLUMN_PHONE_NUMBER));
+                String email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+                String gender = cursor.getString(cursor.getColumnIndex(COLUMN_GENDER));
+                // Create a User object with the retrieved data
+                User user = new User(fullName, phoneNumber, email, gender);
+                userList.add(user);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return userList;
+    }
 
 
 
