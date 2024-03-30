@@ -104,6 +104,7 @@ public class Admin_Confirm extends AppCompatActivity {
     }
 
     // Method to add a product
+    // Method to add a product
     public void addProductHandler(View view) {
         // Retrieve data from EditText fields
         String productType = productTypeEditTxt.getText().toString().trim();
@@ -114,21 +115,32 @@ public class Admin_Confirm extends AppCompatActivity {
 
         // Validate input fields (optional)
 
-        // Save the selected image as a file
-        String imagePath = saveImageToFile(imageUri);
+        // Check if an image is selected
+        if (imageUri != null) {
+            // Save the selected image as a file
+            String imagePath = saveImageToFile(imageUri);
 
-        // Insert data into the "products" table
-        long result = databaseHelper.insertProduct(productType, productName, weight, price, description, imagePath);
+            if (imagePath != null) {
+                // Insert data into the "products" table
+                long result = databaseHelper.insertProduct(productType, productName, weight, price, description, imagePath);
 
-        if (result != -1) {
-            // Data inserted successfully
-            Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
-            // Optionally, clear the form fields and reset the image
-            clearFormFields();
-            productImageView.setImageResource(R.drawable.football); // Set the default image
+                if (result != -1) {
+                    // Data inserted successfully
+                    Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
+                    // Optionally, clear the form fields and reset the image
+                    clearFormFields();
+                    productImageView.setImageResource(R.drawable.football); // Set the default image
+                } else {
+                    // Failed to insert data
+                    Toast.makeText(this, "Failed to add product", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Failed to save the image
+                Toast.makeText(this, "Failed to save the image", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            // Failed to insert data
-            Toast.makeText(this, "Failed to add product", Toast.LENGTH_SHORT).show();
+            // No image selected
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
         }
     }
 

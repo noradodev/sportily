@@ -1,5 +1,7 @@
 package com.rado.spotilyapp;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -124,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_EMAIL, "admin@gmail.com");
         values.put(COLUMN_ROLE, "admin");
         values.put(COLUMN_GENDER, "male");
-        values.put(COLUMN_PASSWORD, "12345");
+        values.put(COLUMN_PASSWORD, "123456");
 
         db.insert(TABLE_NAME, null, values);
     }
@@ -163,12 +166,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long insertProduct(String productType, String productName, String weight, String price, String description, String imagePath) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
+        // Add product details
         values.put(COLUMN_PRODUCT_TYPE, productType);
         values.put(COLUMN_PRODUCT_NAME, productName);
         values.put(COLUMN_WEIGHT, weight);
         values.put(COLUMN_PRICE, price);
         values.put(COLUMN_DESCRIPTION, description);
-        values.put(COLUMN_PRODUCT_IMG_PATH, imagePath); // Store the image path
+
+        // Handle image if provided
+        if (imagePath != null && !imagePath.isEmpty()) {
+            // Convert image file to byte array
+            byte[] imageBytes = fileToByteArray(imagePath);
+            if (imageBytes != null) {
+                values.put(COLUMN_PRODUCT_IMG, imageBytes); // Store image as blob
+            } else {
+                // Handle error if image conversion fails (optional)
+                Log.w(TAG, "Failed to convert image file to byte array for product: " + productName);
+            }
+        } else {
+            // No image provided, set product image to null or default value (optional)
+            // values.put(COLUMN_PRODUCT_IMG, null); // Or a placeholder value
+        }
+
         long id = db.insert(TABLE_PRODUCTS, null, values);
         db.close();
         return id;
@@ -208,8 +228,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             File file = new File(filePath);
             FileInputStream fis = new FileInputStream(file);
-            bytes = new byte[(int) file.length()];
-            fis.read(bytes);
+            long fileSize = file.length();
+            if (fileSize <= Integer.MAX_VALUE) {
+                // Check for file size exceeding integer limit
+                bytes = new byte[(int) fileSize];
+            } else {
+                throw new IOException("File size exceeds integer limit");
+            }
+            int read = fis.read(bytes);
+            if (read != fileSize) {
+                throw new IOException("Failed to read entire file");
+            }
             fis.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -217,6 +246,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return bytes;
     }
 
+
+    public byte[] getProductImageBytesById(int productId) {
+        byte[] imageBytes = null;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            // Query the database to fetch the BLOB data based on the product ID
+            String[] columns = {"image_data"};
+            String selection = "id = ?";
+            String[] selectionArgs = {String.valueOf(productId)};
+            cursor = db.query("product_img", columns, selection, selectionArgs, null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                int columnIndex = cursor.getColumnIndexOrThrow("image_data");
+                imageBytes = cursor.getBlob(columnIndex);
+            }
+        } catch (Exception e) {
+            // Handle any exceptions that occur during database operations
+            e.printStackTrace();
+        } finally {
+            // Close the cursor and database
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+
+        return imageBytes;
+    }
 
 
 //    public Product getProductById(int productId) {
