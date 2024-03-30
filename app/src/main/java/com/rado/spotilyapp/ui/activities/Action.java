@@ -38,10 +38,4 @@ public class Action extends AppCompatActivity {
 
     }
 
-    public void viewUser(View view) {
-        Intent viewUsers= new Intent(Action.this, UserInfoActivity.class);
-        startActivity(viewUsers);
-    }
-
-
 }

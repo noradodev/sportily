@@ -11,6 +11,6 @@ public class EditProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update2);
+        setContentView(R.layout.activity_up_del);
     }
 }
