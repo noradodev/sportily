@@ -65,7 +65,9 @@
                 android:layout_height="109dp"
                 app:srcCompat="@drawable/basketball"
                 tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="2dp" />
+                tools:layout_editor_absoluteY="2dp"
+                android:onClick="openFileChooser"
+                />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
