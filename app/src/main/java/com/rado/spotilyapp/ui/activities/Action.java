@@ -38,4 +38,9 @@ public class Action extends AppCompatActivity {
 
     }
 
+
+    public void viewUser(View view) {
+        Intent tc= new Intent(Action.this, UserInfoActivity.class);
+        startActivity(tc);
+    }
 }

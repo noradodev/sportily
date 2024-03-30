@@ -60,7 +60,7 @@
 
 
             <ImageView
-                android:id="@+id/profileImageView"
+                android:id="@+id/productImageView"
                 android:layout_width="399dp"
                 android:layout_height="109dp"
                 app:srcCompat="@drawable/basketball"
