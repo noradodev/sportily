@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public class Product {
     private int id;
-    private Bitmap productImage;
+    private byte[] product_img;
     private String productType;
     private String productName;
     private String weight;
@@ -91,6 +91,11 @@ public class Product {
 
     public void setProductImagePath(String productImagePath) {
         this.productImagePath = productImagePath;
+    }
+
+
+    public byte[] getProductImageBytes() {
+        return product_img;
     }
 
 

@@ -30,7 +30,6 @@ public class ProductFragment extends Fragment {
     private ProductAdapter productAdapter;
     private List<Product> productList;
     private DatabaseHelper databaseHelper;
-    private SearchView searchView;
 
     @Nullable
     @Override
@@ -39,7 +38,6 @@ public class ProductFragment extends Fragment {
 
 //        Lina
         // Finding the SearchView within the inflated layout
-        searchView = view.findViewById(R.id.searchView);
 
 
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -60,28 +58,11 @@ public class ProductFragment extends Fragment {
 
 //        lina
         // Set up the search functionality
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filter(newText);
-                return true;
-            }
-        });
+
+        // Filter the list of products based on the search query
+
         return view;
     }
-
-    // Filter the list of products based on the search query
-    private void filter(String query) {
-
-        List<Product> filteredList = databaseHelper.getAllProducts();
-        productAdapter.filterList(filteredList);
-    }
-
-
 }
 

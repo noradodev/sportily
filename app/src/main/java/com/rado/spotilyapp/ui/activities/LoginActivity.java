@@ -84,6 +84,19 @@ public class LoginActivity extends AppCompatActivity {
         boolean isValidUser = databaseHelper.authenticateUser(email, password, user);
         boolean isValidAdmin = databaseHelper.authenticateUser(email, password, admin);
 
+        // Perform validation checks
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!isValidPassword(password)) {
+            Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+
         if (isValidUser) {
             // Login successful
             Toast.makeText(this, "Login successful as User", Toast.LENGTH_SHORT).show();
@@ -99,6 +112,17 @@ public class LoginActivity extends AppCompatActivity {
             // Login failed
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        // You can use a regular expression to validate email format
+        String emailRegex = "^[\\w!#$%&'*+/=?^`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isValidPassword(String password) {
+        // Check password length (minimum 6 characters)
+        return password.length() >= 6;
     }
 
 
